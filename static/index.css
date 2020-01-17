@@ -1,0 +1,15 @@
+body {
+    background-color: gray;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        content: 'dark';
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        content:'light';
+    }
+}
