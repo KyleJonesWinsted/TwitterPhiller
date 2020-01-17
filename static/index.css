@@ -1,10 +1,13 @@
+body {
+    background-color: black;
+}
 
-.default {
+.light {
     background-color: white;
 }
 
 .dim {
-    background-color: #213038;
+    background-color: #132029;
 }
 
 .lights-out {
