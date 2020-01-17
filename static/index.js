@@ -35,7 +35,7 @@ function cycleColorSchemes(currentColorScheme) {
 }
 
 function updateColorScheme(currentColorScheme) {
-    const isDarkMode = window.getComputedStyle(document.body).content == '"dark"'
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
     switch(currentColorScheme) {
         case colorSchemes.DEFAULT:
             console.log('default')
@@ -60,7 +60,7 @@ function updateColorScheme(currentColorScheme) {
     }
 }
 
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
     console.log('changed system dark mode')
     updateColorScheme(usersPreferredColorScheme)
 })
@@ -69,4 +69,3 @@ document.body.addEventListener("dblclick", () => {
     console.log('double clicked')
     cycleColorSchemes(usersPreferredColorScheme)
 })
-
