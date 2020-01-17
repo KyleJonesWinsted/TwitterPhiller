@@ -1,5 +1,14 @@
-body {
-    background-color: gray;
+
+.default {
+    background-color: white;
+}
+
+.dim {
+    background-color: #213038;
+}
+
+.lights-out {
+    background-color: black;
 }
 
 @media (prefers-color-scheme: dark) {
