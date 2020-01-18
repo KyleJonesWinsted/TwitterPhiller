@@ -125,7 +125,13 @@ const mainDiv = document.getElementById('main')
 const tweetsDiv = document.getElementById('tweets')
 
 function insertTweet(tweetUrl) {
-    const tweetId = tweetUrl.split('/status/')[1]
+    const regex = new RegExp(/twitter.com\/.*\/status\/(\d*)/g)
+    const tweetMatch = regex.exec(tweetUrl)
+    if (!tweetMatch) {
+        alert('Invalid content dropped.')
+        return
+    }
+    const tweetId = tweetMatch[1]
     console.log(tweetId)
     const tweetContainer = document.createElement('div')
     tweetContainer.className = 'tweet-container'
@@ -152,7 +158,6 @@ function insertTweet(tweetUrl) {
 
 function deleteTweet(e) {
     console.log('Delete button pressed')
-    console.log(e.target.parentNode)
     tweetsDiv.removeChild(e.target.parentNode)
 }
 
@@ -162,7 +167,6 @@ document.body.addEventListener('dragover', (e) => {
 
 document.body.addEventListener('dragenter', (e) => {
     e.preventDefault()
-    console.log('entered')
 })
 
 document.body.addEventListener('drop', (e)=> {
