@@ -29,6 +29,7 @@ if (!usersPreferredColorScheme) {
 }
 
 updateColorScheme(usersPreferredColorScheme)
+showModeChangeAlert()
 
 function setUsersPreferredColorScheme(newColorScheme) {
     console.log("changed to: " + newColorScheme)
