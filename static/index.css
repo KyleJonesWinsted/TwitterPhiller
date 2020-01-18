@@ -12,6 +12,7 @@ body {
     border-radius: 20px;
     text-align: center;
     padding: 10px;
+    z-index: 3;
 }
 
 #mode-frame h1 {

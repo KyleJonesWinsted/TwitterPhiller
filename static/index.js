@@ -117,3 +117,38 @@ document.body.addEventListener("dblclick", () => {
     cycleColorSchemes(usersPreferredColorScheme)
     showModeChangeAlert()
 })
+
+
+//Handle dragged tweets
+
+const mainDiv = document.getElementById('main')
+
+function insertTweet(tweetUrl) {
+    const tweetId = tweetUrl.split('/status/')[1]
+    console.log(tweetId)
+    twttr.widgets.createTweet(
+        tweetId,
+        document.getElementById('tweets'),
+        {
+            theme: 'light'
+        }
+    ).then(() => {
+        console.log('tweet added')
+    })
+}
+
+document.body.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+document.body.addEventListener('dragenter', (e) => {
+    e.preventDefault()
+    console.log('entered')
+})
+
+document.body.addEventListener('drop', (e)=> {
+    e.preventDefault()
+    const tweetUrl = e.dataTransfer.getData('text/uri-list')
+    console.log(tweetUrl || 'Not a valid url')
+    insertTweet(tweetUrl)
+})
