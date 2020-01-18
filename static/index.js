@@ -9,8 +9,20 @@ const colorSchemes = {
     AUTO_LIGHTS_OUT: 'auto_lights_out'
 }
 
+const modeTextValues = {
+    AUTO: 'Auto',
+    ALWAYS: 'Always',
+    LIGHT: 'Light',
+    DIM: 'Dim',
+    LIGHTS_OUT: 'Lights Out'
+}
+
 const colorStorageKey = 'usersPreferredColorScheme'
 var usersPreferredColorScheme = localStorage.getItem(colorStorageKey)
+
+const modeFrame = document.getElementById('mode-frame')
+const modeTypeText = document.getElementById('mode-type')
+const modeColorText = document.getElementById('mode-color')
 
 if (!usersPreferredColorScheme) {
     setUsersPreferredColorScheme(colorSchemes.AUTO_DIM)
@@ -51,24 +63,47 @@ function updateColorScheme(currentColorScheme) {
         case colorSchemes.LIGHT:
             console.log('light')
             document.body.className = colorSchemes.LIGHT
+            modeTypeText.innerHTML = modeTextValues.ALWAYS
+            modeColorText.innerHTML = modeTextValues.LIGHT
             break
         case colorSchemes.DIM:
             console.log('dim')
             document.body.className = colorSchemes.DIM
+            modeTypeText.innerHTML = modeTextValues.ALWAYS
+            modeColorText.innerHTML = modeTextValues.DIM
             break
         case colorSchemes.LIGHTS_OUT:
             console.log('lights_out')
             document.body.className = colorSchemes.LIGHTS_OUT
+            modeTypeText.innerHTML = modeTextValues.ALWAYS
+            modeColorText.innerHTML = modeTextValues.LIGHTS_OUT
             break
         case colorSchemes.AUTO_DIM:
             console.log(isDarkMode ? 'auto dim dark' : 'auto dim light')
             document.body.className = isDarkMode ? colorSchemes.DIM : colorSchemes.LIGHT
+            modeTypeText.innerHTML = modeTextValues.AUTO
+            modeColorText.innerHTML = modeTextValues.DIM
             break
         case colorSchemes.AUTO_LIGHTS_OUT:
             console.log(isDarkMode ? 'auto lights out dark' : 'auto lights out light')
             document.body.className = isDarkMode ? colorSchemes.LIGHTS_OUT : colorSchemes.LIGHT
+            modeTypeText.innerHTML = modeTextValues.AUTO
+            modeColorText.innerHTML = modeTextValues.LIGHTS_OUT
             break
     }
+}
+
+function showModeChangeAlert() {
+    modeFrame.style.opacity = 1.0
+    window.setTimeout(() =>{
+        var fadeOut = setInterval(() => {
+            if (modeFrame.style.opacity < 0.1) {
+                clearInterval(fadeOut)
+            } else {
+                modeFrame.style.opacity -= 0.1
+            }
+        }, 50)
+    }, 500)
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
@@ -79,4 +114,5 @@ window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
 document.body.addEventListener("dblclick", () => {
     console.log('double clicked')
     cycleColorSchemes(usersPreferredColorScheme)
+    showModeChangeAlert()
 })

@@ -2,6 +2,25 @@ body {
     background-color: black;
 }
 
+#mode-frame {
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 85px);
+    left: calc(50% - 95px);
+    width: 170px;
+    background-color: black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+#mode-frame h1 {
+    font-family: sans-serif;
+    color: white;
+    margin: 5px;
+    -webkit-user-select: none;
+}
+
 .light {
     background-color: white;
 }
