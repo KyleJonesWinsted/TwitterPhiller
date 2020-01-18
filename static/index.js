@@ -122,19 +122,38 @@ document.body.addEventListener("dblclick", () => {
 //Handle dragged tweets
 
 const mainDiv = document.getElementById('main')
+const tweetsDiv = document.getElementById('tweets')
 
 function insertTweet(tweetUrl) {
     const tweetId = tweetUrl.split('/status/')[1]
     console.log(tweetId)
+    const tweetContainer = document.createElement('div')
+    tweetContainer.className = 'tweet-container'
+    tweetContainer.id = tweetId
+    const deleteTweetButton = document.createElement('button')
+    deleteTweetButton.className = 'delete-tweet-button'
+    deleteTweetButton.innerHTML = '&#10006'
+    deleteTweetButton.onclick = (e) => { deleteTweet(e) }
+    tweetContainer.appendChild(deleteTweetButton)
+    tweetsDiv.appendChild(tweetContainer)
     twttr.widgets.createTweet(
         tweetId,
-        document.getElementById('tweets'),
+        tweetContainer,
         {
-            theme: 'light'
+            cards: 'hidden',
+            conversation: 'none',
+            theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+            dnt: true
         }
     ).then(() => {
         console.log('tweet added')
     })
+}
+
+function deleteTweet(e) {
+    console.log('Delete button pressed')
+    console.log(e.target.parentNode)
+    tweetsDiv.removeChild(e.target.parentNode)
 }
 
 document.body.addEventListener('dragover', (e) => {

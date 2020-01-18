@@ -4,7 +4,7 @@ body {
 
 #mode-frame {
     opacity: 0;
-    position: absolute;
+    position: fixed;
     top: calc(50% - 85px);
     left: calc(50% - 95px);
     width: 170px;
@@ -33,6 +33,35 @@ body {
 .lights-out {
     background-color: black;
 }
+
+#tweets {
+    margin: 50px 0px;
+}
+
+.delete-tweet-button {
+    font-family: 'Lucida Sans Unicode';
+    font-size: 20px;
+    margin: 0px 5px;
+    display: inline-block;
+    -webkit-user-select: none;
+    border: none;
+    padding: 0px;
+    border-radius: 50%;
+    width: 29px;
+}
+
+.light div div div .delete-tweet-button {
+    background-color: #DDDDDD;
+}
+
+.dim div div div .delete-tweet-button {
+    background-color: white;
+}
+
+.lights-out div div div .delete-tweet-button {
+    background-color: white;
+}
+
 
 @media (prefers-color-scheme: dark) {
     body {
