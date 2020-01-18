@@ -11,3 +11,5 @@ You can choose your preferred background color by double tapping anywhere on the
 * Always Lights Out: A black background all the time.
 * Auto Dim: Either white or dim depending on the system wide dark mode setting
 * Auto Lights Out: Either white or black depending on the system wide dark mode setting
+
+![App in use](https://i.imgur.com/nImZLyB.jpg)
