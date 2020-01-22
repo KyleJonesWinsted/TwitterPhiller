@@ -2,6 +2,10 @@
 
 ###### Inspired by [Connected episode 277](https://www.relay.fm/connected/277)
 
+###### Mentioned on [Connected episode 278](https://www.relay.fm/connected/278)
+
+#### Site can be found [here](http://twitter-philler.herokuapp.com)
+
 This is a simple PWA that sits along side the offical Twitter app on iPadOS. You can add it to your homescreen from Safari by tapping the "Share" button and tapping "Add to Homescreen".
 
 ## Setting Background Color
